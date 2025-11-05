@@ -1,1 +1,1 @@
-# javascript-challenges
+# Coding challenges & Mini-projects 
