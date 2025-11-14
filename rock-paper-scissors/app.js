@@ -1,38 +1,58 @@
 function playGame() {
+    const userScoreSpan = document.querySelector('#user-score');
+    const computerScoreSpan = document.querySelector('#computer-score');
+
+    const roundInfo = document.querySelector('#round-info')
+
+    const controls = document.querySelector('#controls');
+
+    controls.addEventListener('click', (event) => {
+        if (event.target.id === 'paper') humanChoice = 'paper';
+        if (event.target.id === 'rock') humanChoice = 'rock';
+        if (event.target.id === 'scissors') humanChoice = 'scissors';
+        
+        playRound();
+        console.log(humanScore);
+        console.log(computerScore);
+    });
+    
     let humanScore = 0;
     let computerScore = 0;
 
     let getComputerChoice = () => ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)];
-    let getHumanChoice = () => humanChoice = prompt('Item to throw?');
+    let humanChoice;
 
     function playRound() {
-        for (let round = 1; round <= 5; round++) {
-            console.log(`===== ROUND ${round} ======`);
-
-            let computerChoice = getComputerChoice();
-            let humanChoice = getHumanChoice();
-
-            console.log(`Computer: ${computerChoice}`);
-            console.log(`You: ${humanChoice}`);
+        if (humanScore === 4 || computerScore === 4) {
             
-            if (
-                computerChoice === 'rock' && humanChoice === ' scissors' ||
-                computerChoice === 'paper' && humanChoice === 'rock' ||
-                computerChoice === 'scissors' && humanChoice === 'paper'
-            ) {
-                console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
-                computerScore++;
-            } else if (computerChoice === humanChoice) {
-                console.log("It's a tie!");
-                round--;
-            } else {
-                console.log('You won!');
-                humanScore++;
-            };
-        };
-    };
+            humanScore > computerScore ? 
+                roundInfo.textContent = 'You are a winner!' :
+                roundInfo.textContent = 'Computer is a winner!';
 
-    playRound();
+            humanScore = 0;
+            computerScore = 0;
+            return;
+        };
+
+        let computerChoice = getComputerChoice();
+
+        if (
+            computerChoice === 'rock' && humanChoice === ' scissors' ||
+            computerChoice === 'paper' && humanChoice === 'rock' ||
+            computerChoice === 'scissors' && humanChoice === 'paper'
+        ) {
+            roundInfo.textContent = `You lose! ${computerChoice} beats ${humanChoice}.`;
+            computerScore++;
+        } else if (computerChoice === humanChoice) {
+            roundInfo.textContent = "It's a tie!";
+        } else {
+            roundInfo.textContent = 'You won!';
+            humanScore++;
+        };
+        
+        computerScoreSpan.textContent = `Computer score: ${computerScore}`;
+        userScoreSpan.textContent = `Your score: ${humanScore}`;
+    };
 };
 
 playGame();

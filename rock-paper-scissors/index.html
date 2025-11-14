@@ -6,8 +6,90 @@
         <title>Document</title>
         <!-- <script defer src="app.js"></script> -->
         <script defer src="app.js"></script>
+        <style>
+            *, *::after, *::before {
+                box-sizing: border-box;
+            }
+            
+            :where(body) {
+                margin: 0;
+                font-family: sans-serif;
+                
+            }
+
+            .page-main {
+                height: 100dvh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .visually-hidden {
+                width: 0%;
+                height: 0%;
+                margin: -1px;
+                padding: 0;
+                clip-path: inset(100%);
+                clip: rect(0, 0, 0, 0);
+                overflow: hidden;
+                border: none;
+                position: absolute;
+            }
+
+            .results {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                height: 131px;
+                font-size: 1.125rem;
+            }
+
+            .controls {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .btn {
+                width: 7.5rem;
+                height: 2.5rem;
+                border-radius: 2rem;
+                border: none;
+                transition: 150ms ease;
+                background-color: rgb(96, 115, 255);
+                color: white;
+                font-size: 1rem;
+            }
+
+            .btn:hover {
+                scale: 1.1;
+            }
+            
+            .btn:active {
+                background-color: rgb(62, 74, 167);
+                scale: 1;
+            }
+        </style>
     </head>
     <body>
-        
+        <main class="page-main">
+            <section class="controls" id="controls">
+                <h1 class="visually-hidden">Rock Paper Scissors Game</h1>
+
+                <button class="btn" id="rock">Rock</button>
+                <button class="btn" id="paper">Paper</button>
+                <button class="btn" id="scissors">Scissors</button>
+
+            </section>
+
+            <div class="results">
+                <span id="computer-score"></span>
+                <span id="user-score"></span>
+                <span id="round-info"></span>
+            </div>
+        </main>
     </body>
 </html>
