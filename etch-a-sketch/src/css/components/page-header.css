@@ -1,0 +1,11 @@
+.page-header {
+  position: fixed;
+  inset: 0;
+  height: 3.5rem;
+  display: block;
+}
+
+.etch-ul {
+  display: flex;
+  justify-content: space-between;
+}
