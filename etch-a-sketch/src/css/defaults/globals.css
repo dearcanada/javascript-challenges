@@ -59,7 +59,11 @@
   font-weight: var(--fw-400);
 }
 
-
+ul, ol {
+  margin: 0;
+  padding-inline: 2ch;
+  list-style-type: none;
+}
 
 :where(dl) {
   margin-block: 0;

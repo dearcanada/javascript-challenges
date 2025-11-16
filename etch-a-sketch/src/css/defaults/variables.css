@@ -1,5 +1,6 @@
 :root {
   --step-custom: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+  --step--1: clamp(0.775rem, 0.731rem + 0.1378vw, 0.925rem);
   --step-0: clamp(0.9375rem, 0.8715rem + 0.2817vw, 1.125rem);
   --step-1: clamp(1.125rem, 1.026rem + 0.4225vw, 1.4063rem);
   --step-2: clamp(1.35rem, 1.2064rem + 0.6127vw, 1.7578rem);
@@ -20,7 +21,11 @@
   --clr-primary: #5F8C3E;
   --clr-primary-hover: #44652c;
   --clr-primary-active: #334c21;
-  --clr-bg: #F5F5DC;
+  --clr-bg: #242424;
+  --clr-button-bg: #ffffff;
+  --clr-button-bg-hover: #e8e8e8;
+  --clr-button-darkening: #0f0f0f;
+  --clr-button-darkening-hover: #151515;
 
   --ff: "Lexend", sans-serif;
   --fw-400: 400;
