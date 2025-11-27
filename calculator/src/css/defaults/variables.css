@@ -18,14 +18,18 @@
   --space-2xl: clamp(3.75rem, 3.4859rem + 1.1268vw, 4.5rem);
   --space-3xl: clamp(5.625rem, 5.2289rem + 1.6901vw, 6.75rem);
 
-  /* --clr-primary: #5F8C3E;
-  --clr-primary-hover: #44652c;
-  --clr-primary-active: #334c21;
-  --clr-bg: #242424;
-  --clr-button-bg: #ffffff;
-  --clr-button-bg-hover: #e8e8e8;
-  --clr-button-darkening: #0f0f0f;
-  --clr-button-darkening-hover: #151515; */
+  --clr-primary-bg: #202020;
+  --clr-btn-digit: #3c3c3c;
+  --clr-btn-digit-hover: #323232;
+  --clr-btn-digit-active: #282828;
+  --clr-btn-action: #323232;
+  --clr-btn-action-hover: #3c3c3c;
+  --clr-btn-submit-operation: #ef7634;
+  --clr-btn-submit-operation-hover: #cb6229;
+  --clr-btn-submit-operation-active: #b45725;
+  --clr-btn-clear: #de3434;
+  --clr-btn-clear-hover: #c22c2c;
+  --clr-btn-clear-active: #ad2323;
 
   --ff: "Lexend", sans-serif;
   --fw-400: 400;
