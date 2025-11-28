@@ -14,19 +14,11 @@
 /* components width */
 .width-wide {
   max-inline-size: min(100% - var(--space-s) * 2, var(--width-l));
-  /* aspect-ratio: 1/1; */
   margin-inline: auto;
 }
 
 .width-medium {
   max-inline-size: min(100% - var(--space-s) * 2, var(--width-m));
-  /* aspect-ratio: 1/1; */
-  margin-inline: auto;
-}
-
-.width-custom {
-  max-inline-size: min(100% - var(--space-s) * 2, var(--width-custom));
-  /* aspect-ratio: 1/1; */
   margin-inline: auto;
 }
 
@@ -38,7 +30,11 @@
 
 .width-full {
   max-inline-size: none;
-  /* aspect-ratio: 1/1; */
+  margin-inline: auto;
+}
+
+.width-custom {
+  max-inline-size: fit-content;
   margin-inline: auto;
 }
 

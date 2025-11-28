@@ -8,6 +8,8 @@
   font-optical-sizing: auto;
   font-weight: normal;
   color: var(--fc-white);
+
+  background-color: var(--clr-primary-bg-body);
   
   scroll-behavior: smooth;
   overflow-wrap: break-word;
