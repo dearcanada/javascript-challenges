@@ -9,44 +9,55 @@
   </head>
 
   <body>
-    <main class="page-main">
-      <section class="calculator">
-        <h1 class="calculator__title">Calculator</h1>
+    <main class="page-main width-custom">
+      <section class="calculator" id="calc">
+        <h1 class="calculator__title hidden">Calculator2000</h1>
 
         <form class="calculator-form" action="">
-          <fieldset class="calculator-from__field">
-            <legend>Manual input</legend>
+          <fieldset class="calculator-form__field">
+            <legend class="calculator-form__legend hidden">Calculator</legend>
 
-            <label for="calcInput">Enter data manually</label>
-            <input type="text" name="calcInput" id="calcInput" placeholder="a + b">
+            <label for="calcInput" class="hidden">Enter data manually</label>
+            <input
+              type="text"
+              name="calcInput"
+              pattern="[+0-9]+"
+              id="calcInput"
+              class="calculator-form_input">
 
-            <button type="submit">OK</button>
+            <button
+              class="calc-btn calc-btn--clear-btn"
+              data-target="clear"
+              type="button">C
+            </button>
+            
+            <button
+              class="calc-btn calc-btn--submit" 
+              ata-target="="
+              type="submit">=
+            </button>
           </fieldset>
         </form>
 
         <div class="calculator-buttons__digits">
-          <button class="calc-btn" data-digit="1">1</button>
-          <button class="calc-btn" data-digit="2">2</button>
-          <button class="calc-btn" data-digit="3">3</button>
-          <button class="calc-btn" data-digit="4">4</button>
-          <button class="calc-btn" data-digit="5">5</button>
-          <button class="calc-btn" data-digit="6">6</button>
-          <button class="calc-btn" data-digit="7">7</button>
-          <button class="calc-btn" data-digit="8">8</button>
-          <button class="calc-btn" data-digit="9">9</button>
-          <button class="calc-btn" data-digit="0">0</button>
+          <button class="calc-btn" data-target="1">1</button>
+          <button class="calc-btn" data-target="2">2</button>
+          <button class="calc-btn" data-target="3">3</button>
+          <button class="calc-btn" data-target="4">4</button>
+          <button class="calc-btn" data-target="5">5</button>
+          <button class="calc-btn" data-target="6">6</button>
+          <button class="calc-btn" data-target="7">7</button>
+          <button class="calc-btn" data-target="8">8</button>
+          <button class="calc-btn" data-target="9">9</button>
+          <button class="calc-btn" data-target="0">0</button>
         </div>
 
         <div class="calculator-buttons__actions">
-          <button class="calc-btn calc-btn--clear-btn" data-action="clear">C</button>
-          
-          <button class="calc-btn calc-btn--submit" data-operator="=">=</button>
-          <button class="calc-btn calc-btn--operator" data-operator="+">+</button>
-          <button class="calc-btn calc-btn--operator" data-operator="-">-</button>
-          <button class="calc-btn calc-btn--operator" data-operator="*">&times;</button>
-          <button class="calc-btn calc-btn--operator" data-operator="/">&div;</button>
 
-
+          <button class="calc-btn calc-btn--operator" data-target="+">+</button>
+          <button class="calc-btn calc-btn--operator" data-target="-">-</button>
+          <button class="calc-btn calc-btn--operator" data-target="*">&times;</button>
+          <button class="calc-btn calc-btn--operator" data-target="/">&div;</button>
         </div>
       </section>
     </main>
