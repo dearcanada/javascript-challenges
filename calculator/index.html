@@ -13,15 +13,15 @@
       <section class="calculator" id="calc">
         <h1 class="calculator__title hidden">Calculator2000</h1>
 
-        <form class="calculator-form" action="">
+        <form class="calculator-form" id="calc-form">
           <fieldset class="calculator-form__field">
             <legend class="calculator-form__legend hidden">Calculator</legend>
 
             <label for="calcInput" class="hidden">Enter data manually</label>
+
             <input
               type="text"
               name="calcInput"
-              pattern="[+0-9]+"
               id="calcInput"
               class="calculator-form_input">
 
@@ -33,7 +33,7 @@
             
             <button
               class="calc-btn calc-btn--submit" 
-              ata-target="="
+              data-target="="
               type="submit">=
             </button>
           </fieldset>
@@ -49,11 +49,12 @@
           <button class="calc-btn" data-target="7">7</button>
           <button class="calc-btn" data-target="8">8</button>
           <button class="calc-btn" data-target="9">9</button>
+          <button class="calc-btn" data-target="+/-">+/-</button>
           <button class="calc-btn" data-target="0">0</button>
+          <button class="calc-btn" data-target=".">.</button>
         </div>
 
         <div class="calculator-buttons__actions">
-
           <button class="calc-btn calc-btn--operator" data-target="+">+</button>
           <button class="calc-btn calc-btn--operator" data-target="-">-</button>
           <button class="calc-btn calc-btn--operator" data-target="*">&times;</button>
