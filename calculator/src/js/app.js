@@ -1,24 +1,39 @@
-let operandA = 3;
-let operandB = 5;
-let operator = '+';
-
-function operate(a, operator, b) {
-  if (operator === '+') return a + b;
-  if (operator === '-') return a - b;
-  if (operator === '*') return a * b;
-  if (operator === '/') return a / b;
-};
-
-console.log(operate(operandA, operator, operandB));
+"use strict";
 
 const calculator = document.querySelector('#calc');
 const calcInput = document.querySelector('#calcInput');
+const calcForm = document.querySelector('#calc-form');
+const operatorsRegex = /[-+*\/.]/;
 
-calculator.addEventListener('click', upldateCalcData);
+calcForm.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-function upldateCalcData(event) {
+  if (!calcInput.value) return;
+
+  // Checks if an input value consist of numbers and operators only
+  if (!/^[-+*\/0-9\s.]+$/i.test(calcInput.value)){
+    alertInvalidInput();
+    return;
+  };
+
+  if (calcInput.value.at(-1) === ' ') {
+    alertInvalidInput();
+    return;
+  };
+
+  // Checks if the last char is not an operator or whitespace
+  if (operatorsRegex.test(calcInput.value.at(-1))) {
+    alertInvalidInput();
+    return;
+  };
+
+  console.log('yes');
+
+  calcInput.value = new Function(`return ${calcInput.value}`)();
+});
+
+calculator.addEventListener('click', (event) => {
   const targetData = event.target.getAttribute('data-target');
-
 
   if (targetData === '1') calcInput.value += 1;
   if (targetData === '2') calcInput.value += 2;
@@ -29,25 +44,48 @@ function upldateCalcData(event) {
   if (targetData === '7') calcInput.value += 7;
   if (targetData === '8') calcInput.value += 8;
   if (targetData === '9') calcInput.value += 9;
-  if (targetData === '0') calcInput.value += 0;
+  if (targetData === '0' && validateZero(calcInput.value)) calcInput.value += 0;
 
+  if (targetData === '+/-') calcInput.value[0] === '-' ?
+   calcInput.value = calcInput.value.replace(calcInput.value[0], '') : 
+   calcInput.value = `-${calcInput.value}`
+
+  if (targetData === '.') calcInput.value += '.';
   if (targetData === 'clear') calcInput.value = '';
-  // if (targetData === '=') calcInput.value = '';
 
   if (targetData === '+' && canAddOperator(calcInput.value, '+')) calcInput.value += '+';
   if (targetData === '-' && canAddOperator(calcInput.value, '-')) calcInput.value += '-';
   if (targetData === '*' && canAddOperator(calcInput.value, '*')) calcInput.value += '*';
   if (targetData === '/' && canAddOperator(calcInput.value, '/')) calcInput.value += '/';
-};
+
+  calcInput.scrollLeft = calcInput.scrollWidth;
+});
 
 function canAddOperator(inputValue, operator) {
   if (!inputValue) return false;
 
-  if ( !/[-+*\/]/.test(inputValue.at(-1)) ) {
+  if (!operatorsRegex.test(inputValue.trimEnd().at(-1))) {
     return true;
-  } else if (inputValue.at(-1) !== operator) {
-    calcInput.value = inputValue.slice(0, -1).concat(operator);
+  } else if (inputValue.trimEnd().at(-1) !== operator) {
+    calcInput.value = inputValue.replace(/[-+*\/](?=\s*$)/, operator);
   } else {
     return false;
-  }
+  };
 };
+
+function validateZero(inputValue) {
+  if (inputValue.trimEnd().at(-1) === '/') {
+    alertInvalidInput();
+    return false;
+  };
+  return true;
+};
+
+function alertInvalidInput() {
+  calcInput.classList.add('invalid-input');
+  setTimeout(() => calcInput.classList.remove('invalid-input'), 500);
+};
+
+calcInput.addEventListener('focus', (event) => {
+  event.target.scrollLeft = event.target.scrollWidth;
+});
