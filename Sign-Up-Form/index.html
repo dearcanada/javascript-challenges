@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up Form</title>
+    <link rel="stylesheet" href="./src/index.css">
+  </head>
+  <body>
+    <main>
+      <div class="splash">
+        <div class="odin-logo">
+          <img src="/public/imgs/odin-lined.png" alt="Lined Odin logo">
+          <span>ODIN</span>
+        </div>
+        <span>
+          Photo by
+          <a href="#">Halie West</a> on
+          <a href="#">Unsplash</a>
+        </span>
+      </div>
+
+      <section class="content">
+        <h1 class="hidden">Registration form</h1>
+
+        <p class="content__intro">
+          This is not a real online service! You know you need something 
+          like this in your life to help you realize your deepest dreams. 
+          <br>
+          Sign up <span>now</span> to get started.
+        </p>
+
+        <span class="content__span">
+          You <span>know</span> you want to.
+        </span>
+
+        <form action="" method="" class="content__form">
+          <fieldset>
+            <legend class="hidden">Registration form</legend>
+
+            <h1 class="form__title">Let's do this!</h1>
+            
+            <div>
+              <label for="first-name">First name</label>
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                required>
+            </div>
+
+            <div>
+              <label for="last-name">Last name</label>
+              <input
+                type="text"
+                name="last-name"
+                id="last-name"
+                autocomplete="family-name"
+                required>
+            </div>
+
+            <div>
+              <label for="user-email">Email</label>
+              <input
+                type="email"
+                name="user-email"
+                id="user-email"
+                inputmode="email"
+                autocomplete="email"
+                pattern="[a-zA-Z0-9\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9]{2,3}(\.[a-zA-Z0-9\-]{2,3})?"
+                required>
+            </div>
+
+            <div>
+              <label for="user-tel">Phone number</label>
+              <input
+                type="tel"
+                name="user-tel"
+                id="user-tel"
+                inputmode="tel"
+                required>
+            </div>
+
+            <div>
+              <label for="user-pwd">Password</label>
+              <input
+                type="password"
+                name="user-pwd"
+                id="user-pwd"
+                required>
+            </div>
+
+            <div>
+              <label for="user-pwd-confirm">Confirm Password</label>
+              <input
+                type="password"
+                name="user-pwd-confirm"
+                id="user-pwd-confirm"
+                required>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="form__submit">
+            Create Account
+          </button>
+
+          <span class="form__span">
+            Already have an account?
+            <a href="#">Log in</a>
+          </span>
+        </form> 
+      </section>
+    </main>
+  </body>
+</html
