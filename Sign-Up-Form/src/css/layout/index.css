@@ -1,0 +1,11 @@
+main {
+  height: 100svh;
+  max-width: var(--width-custom);
+  margin-inline: auto;
+
+  display: flex;
+
+  & > .splash {
+    flex-shrink: 0;
+  }
+}
