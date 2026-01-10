@@ -1,0 +1,144 @@
+.page-header {
+  border: 2px solid blue;
+  padding: var(--space-s) var(--space-l);
+
+  display: grid;
+  grid-template:
+    3.75rem 5rem /
+    1fr auto;
+  gap: var(--space-s) var(--space-m);
+} 
+
+/* Search bar */
+
+.search {
+  padding-block: var(--space-xs);  
+
+  display: flex;
+  gap: 0 var(--space-xs);
+}
+
+.search > label {
+  width: 1.5rem;
+
+  flex-shrink: 0;
+
+  background-image: url("/public/imgs/magnify.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.search > input {
+  padding-inline: var(--space-s);
+  
+  min-width: 10rem;
+
+  
+  flex: 1;
+
+  border-radius: 2rem;
+  border: none;
+
+  background-color: var(--clr-search-bar);
+
+  &:focus {
+    outline: 0.15rem solid var(--clr-search-focus);
+  }
+
+  &:hover {
+    background-color: var(--clr-search-hover);
+  }
+}
+
+/* Profile actions */
+.profile {
+  display: flex;
+  column-gap: var(--space-m);
+  justify-content: right;
+}
+
+.profile__notif-icon {
+  flex-shrink: 0;
+
+  width: 1.5rem;
+  
+  background-image: url("/public/imgs/bell-ring-outline.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.profile__account-link {
+  display: flex;
+  align-items: center;
+  column-gap: var(--space-m);
+}
+
+.profile__picture {
+  border-radius: 50%;
+  max-height: 100%;
+}
+
+.profile__account-link {
+  padding: var(--space-3xs);
+  text-decoration: none;
+  color: #000;
+  font-weight: var(--fw-500);
+  border-radius: 2rem;
+}
+
+.profile__account-link:hover {
+  background-color: var(--clr-bg-primary-hover);
+}
+
+.profile__account-link:focus {
+  outline: 0.15rem solid var(--clr-search-focus);
+}
+
+/* User welcome */
+
+.user {
+  display: grid;
+  grid-template: 
+    1fr 1.25fr /
+    5rem 1fr;
+  column-gap: var(--space-s);
+}
+
+.user__profile-picture {
+
+  grid-row: 1 / -1;
+  border-radius: 50%;
+}
+
+.user__welcome {
+  align-self: flex-end;
+
+  font-size: var(--step--1);
+  font-weight: var(--fw-500);
+}
+
+.user__name {
+  font-weight: var(--fw-500);
+  font-size: var(--step-1);
+}
+
+/* User action buttons navigation */
+
+.action-btns {
+  place-self: center;
+
+  display: grid;
+  grid-template-columns: repeat(3, minmax(6.25rem, 1fr));
+  column-gap: var(--space-m);
+}
+
+.action-btns > button {
+  padding: var(--space-2xs) var(--space-m);
+
+  color: var(--clr-header-btns-font-color);
+  background-color: var(--clr-header-btns-bg);
+  border-radius: 2rem;
+  border: none;
+
+  text-wrap: nowrap;
+}

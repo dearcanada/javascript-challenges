@@ -1,0 +1,224 @@
+.page-aside {
+  background: var(--clr-aside-bg-color);
+
+  padding: var(--space-s) 0;
+  
+  color: var(--clr-aside-color);
+  font-size: var(--step-2);
+  font-weight: var(--fw-500);
+
+  display: grid;
+  grid-template: 
+    auto /
+    3rem 1fr;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.page-aside a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Main logo */
+
+/*
+  .aside__nav-primary is a subgrid bc it allows 
+  .nav-links to inherit .page-aside's grid-template 
+*/
+
+.aside__head,
+.aside__nav-primary, 
+.aside__nav-system, 
+.nav-link {
+  line-height: 1;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+.aside__title {
+  font-size: var(--step-3);
+
+  line-height: 1.35;
+}
+
+.aside__logo {
+  background-image: url("/public/imgs/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Navigation links */
+.icon {  
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  filter: invert();
+}
+
+.icon--home {
+  background-image: url("/public/imgs/home.svg");
+}
+
+.icon--profile {
+  background-image: url("/public/imgs/card-account-details-outline.svg");
+}
+
+.icon--messages {
+  background-image: url("/public/imgs/message.svg");
+}
+
+.icon--history {
+  background-image: url("/public/imgs/clock-time-three.svg");
+}
+
+.icon--tasks {
+  background-image: url("/public/imgs/file-multiple.svg");
+}
+
+.icon--communities {
+  background-image: url("/public/imgs/account-group.svg");
+}
+
+.icon--settings {
+  background-image: url("/public/imgs/cog.svg");
+}
+
+.icon--support {
+  background-image: url("/public/imgs/help-box.svg");
+}
+
+.icon--privacy {
+  background-image: url("/public/imgs/shield-check.svg");
+}
+
+.nav-link--system-group {
+  margin-block-start: var(--space-xl);
+}
+
+.nav-link,
+.aside__head {
+  padding: var(--space-xs) var(--space-s);
+}
+
+.nav-link:hover {
+  background-color: var(--clr-aside-bg-hover-color);
+}
+
+
+
+.page-aside {
+  background: var(--clr-aside-bg-color);
+
+  padding: var(--space-s) 0;
+  
+  color: var(--clr-aside-color);
+  font-size: var(--step-2);
+  font-weight: var(--fw-500);
+
+  display: grid;
+  grid-template: 
+    auto /
+    3rem 1fr;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.page-aside a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Main logo */
+
+/*
+  .aside__nav-primary is a subgrid bc it allows 
+  .nav-links to inherit .page-aside's grid-template 
+*/
+
+.aside__head,
+.aside__nav-primary, 
+.aside__nav-system, 
+.nav-link {
+  line-height: 1;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+.nav-link,
+.aside__head {
+  padding: var(--space-xs) var(--space-s);
+}
+
+.nav-link:hover {
+  background-color: var(--clr-aside-bg-hover-color);
+}
+
+.aside__title {
+  font-size: var(--step-3);
+  
+  line-height: 1.35;
+}
+
+.aside__logo {
+  background-image: url("/public/imgs/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Navigation links */
+.icon {  
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  
+  filter: invert();
+}
+
+.nav-link--system-group {
+  margin-block-start: var(--space-xl);
+}
+
+.icon--home {
+  background-image: url("/public/imgs/home.svg");
+}  
+
+.icon--profile {
+  background-image: url("/public/imgs/card-account-details-outline.svg");
+}  
+
+.icon--messages {
+  background-image: url("/public/imgs/message.svg");
+}  
+
+.icon--history {
+  background-image: url("/public/imgs/clock-time-three.svg");
+}  
+
+.icon--tasks {
+  background-image: url("/public/imgs/file-multiple.svg");
+}  
+
+.icon--communities {
+  background-image: url("/public/imgs/account-group.svg");
+}  
+
+.icon--settings {
+  background-image: url("/public/imgs/cog.svg");
+}  
+
+.icon--support {
+  background-image: url("/public/imgs/help-box.svg");
+}  
+
+.icon--privacy {
+  background-image: url("/public/imgs/shield-check.svg");
+}  
+
+
+
