@@ -1,6 +1,8 @@
 .page-header {
-  border: 2px solid blue;
-  padding: var(--space-s) var(--space-l);
+  background-color: var(--clr-component-bg);
+  padding: var(--space-3xs) var(--space-l);
+
+  box-shadow: var(--box-shadow-primary);
 
   display: grid;
   grid-template:
@@ -71,19 +73,16 @@
   display: flex;
   align-items: center;
   column-gap: var(--space-m);
-}
-
-.profile__picture {
-  border-radius: 50%;
-  max-height: 100%;
-}
-
-.profile__account-link {
   padding: var(--space-3xs);
   text-decoration: none;
   color: #000;
   font-weight: var(--fw-500);
   border-radius: 2rem;
+}
+
+.profile__picture {
+  border-radius: 50%;
+  max-height: 100%;
 }
 
 .profile__account-link:hover {
@@ -99,8 +98,8 @@
 .user {
   display: grid;
   grid-template: 
-    1fr 1.25fr /
-    5rem 1fr;
+    2.25rem 2.25rem /
+    4.5rem 1fr;
   column-gap: var(--space-s);
 }
 
@@ -118,7 +117,7 @@
 }
 
 .user__name {
-  font-weight: var(--fw-500);
+  font-weight: var(--fw-550);
   font-size: var(--step-1);
 }
 
@@ -126,6 +125,7 @@
 
 .action-btns {
   place-self: center;
+  font-size: var(--step-1);
 
   display: grid;
   grid-template-columns: repeat(3, minmax(6.25rem, 1fr));

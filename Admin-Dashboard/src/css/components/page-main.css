@@ -1,0 +1,65 @@
+.page-main {
+  margin-inline: var(--space-m);
+}
+
+.projects {
+  color: var(--clr-color-primary);
+  font-size: var(--step-1);
+
+  display: grid;
+  grid-template: 
+    1fr /
+    repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--space-m);
+  grid-auto-rows: 1.07fr;
+}
+
+.projects__card {
+  background-color: var(--clr-component-bg);
+  padding: var(--space-m) var(--space-s);
+
+  box-shadow: var(--box-shadow-primary);
+
+  border-left: solid .5rem var(--clr-card-border);
+  border-radius: .5rem;
+
+  display: grid;
+  grid-template: 
+    auto 1fr 1.5rem /
+    minmax(5rem, 1fr) repeat(3, 1.5rem);
+  column-gap: var(--space-m);
+}
+
+.card__title {
+  grid-column: 1 / -1;
+
+  color: var(--clr-headings-color-primary);
+  font-weight: var(--fw-550);
+  font-size: var(--step-custom);
+}
+
+.card__description {
+  grid-column: 1 / -1;
+
+  margin-block-end: var(--space-m);
+}
+
+.card__icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.card__icon--star {
+  background-image: url("/public/imgs/star-plus-outline.svg");
+  grid-column: 2;
+}
+
+.card__icon--watch {
+  background-image: url("/public/imgs/eye-plus-outline.svg");
+}
+
+.card__icon--basket {
+  background-image: url("/public/imgs/basket-plus.svg");
+}
+

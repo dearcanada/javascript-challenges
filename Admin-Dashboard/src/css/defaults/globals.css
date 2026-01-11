@@ -9,13 +9,13 @@
   font-family: var(--font-custom-sans), var(--font-system-sans);
   font-size: var(--step-0);
 
-  background-color: var();
+  background-color: var(--clr-body-bg);
   
   scroll-behavior: smooth;
   overflow-wrap: break-word;
 
   text-wrap: pretty;
-  line-height: 1.5;
+  line-height: 1.25;
   hyphens: auto;
 }
 

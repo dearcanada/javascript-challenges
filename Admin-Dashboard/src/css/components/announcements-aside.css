@@ -1,0 +1,27 @@
+.announcements-aside {
+  margin-block-end: var(--space-m);
+}
+
+.announcements__list {
+  background-color: var(--clr-component-bg);
+  padding: var(--space-s) var(--space-l);
+
+  color: var(--clr-color-primary);
+  border-radius: .5rem;
+  box-shadow: var(--box-shadow-primary);
+
+  & > li {
+    padding: var(--space-s) 0;
+  }
+}
+
+.announcements__list > * + * {
+  border-top: .1rem solid #c9c9c9;
+}
+
+.an-item__title {
+  color: var(--clr-headings-color-primary);
+  
+  font-size: var(--step-1);
+  font-weight: var(--fw-500);
+}

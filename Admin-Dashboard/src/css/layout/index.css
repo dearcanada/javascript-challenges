@@ -1,4 +1,31 @@
 .page-wrapper {
+  height: 100svh;
+  
   max-width: var(--width-l);
   margin-inline: auto;
+
+  display: grid;
+  grid-template: 
+    10.5rem /
+    .6fr 1.75fr .6fr;
+  grid-template-areas:
+    "page-aside page-header page-header"
+    "page-aside page-main page-secondary";
+  gap: var(--space-m) 0;
+}
+
+.page-header {
+  grid-area: page-header;
+} 
+
+.page-main {
+  grid-area: page-main;
+}
+
+.page-aside {
+  grid-area: page-aside;
+}
+
+.page-secondary {
+  grid-area: page-secondary;
 }
