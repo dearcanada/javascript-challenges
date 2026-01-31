@@ -1,0 +1,37 @@
+.library > * {
+  display: block;
+}
+.catalog {
+  margin-inline: auto;
+  max-width: 60rem;
+  
+  display: grid;
+  grid-template: 
+    30rem / repeat(auto-fit, minmax(15rem, 22.5rem));
+  grid-auto-rows: 30rem;
+  justify-content: center;
+}
+
+.book {
+  background-color: var(--clr-bg-book);
+  border-radius: 1.25rem;
+  padding: var(--space-m);
+
+  & > * {
+    display: block;
+    color: var(--clr-font-book-meta);
+  }
+
+  & > .book__title {
+    color: var(--clr-book-title);
+    font-size: var(--step-3);
+    margin-block-end: var(--space-s);
+  }
+
+  & > span > span{
+    color: var(--clr-font-book-meta-caption);
+  }
+}
+
+
+

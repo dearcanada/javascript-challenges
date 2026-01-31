@@ -1,0 +1,71 @@
+/* Styles */
+.create-dialog {
+  position: absolute;
+  translate: -50% -50%;
+  top: 50%;
+  left: 50%;
+  
+  border-radius: .75rem;
+}
+
+.add-form {
+  
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+
+  & > label > span {
+    display: inline-block;
+    min-width: 6ch;
+  }
+  
+  & > label:nth-of-type(1),
+  & > .modal-actions {
+    margin-block-start: var(--space-s);
+  }
+}
+
+.add-form__caption {
+  line-height: 1;
+  font-size: var(--step-2);
+}
+
+/* Animation */
+.create-dialog {
+  opacity: 0;
+  transition: .5s ease allow-discrete;
+}
+
+.create-dialog:open {
+  opacity: 1;
+  transition: .5s ease;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+.create-dialog::backdrop {
+  opacity: 0;
+  background-color: #000;
+  
+  transition: .5s ease allow-discrete;
+}
+
+.create-dialog:open::backdrop {
+  opacity: .5;
+  transition: .5s ease;
+
+  @starting-style {
+    opacity: 0;
+  }
+}
+
+body:has(.create-dialog:open) {
+  filter: blur(.5rem);
+  transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) filter;
+  
+  @starting-style {
+    filter: blur(0);
+  }
+}
