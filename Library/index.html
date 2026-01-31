@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorem</title>
+    <link rel="stylesheet" href="./src/index.css">
+    <link rel="stylesheet" href="src/index.css">
+    <script defer src="src/scripts/app.js"></script>
+  </head>
+  <body>
+    <main>
+      <section class="library">
+        <h1>Books catalog</h1>
+        
+        <div class="catalog" id="catalog-id">
+          <article class="book" id="book-base">
+            <h1 class="book__title">The Abysmal</h1>
+            <span class="book__author"><span>Author:</span> Josh Benchmark</span>
+            <span class="book__pages"><span>Pages:</span> 256</span>
+            <span class="book__status"><span>Status:</span> Nor read yet</span>
+            <span class="book__id"><span>UID:</span> 588543785345739</span>
+            <button type="button" class="btn btn--remove" id="remove-btn">Remove</button>
+          </article>
+        </div>
+
+        <button
+          type="button"
+          class="btn btn--add"
+          id="add-btn">Add book
+        </button>
+      </section>
+
+      <dialog class="create-dialog" id="dialog">
+        <form method="dialog" class="add-form">
+          <h2 class="add-form__caption">Add your own book :&rpar;</h2>
+
+          <label>
+            <span>Title</span>
+            <input type="text" name="title" id="title-id">
+          </label>
+
+          <label>
+            <span>Author</span>
+            <input type="text" name="author" id="author-id">
+          </label>
+
+          <label>
+            <span>Pages</span>
+            <input type="number" name="pages" id="pages-id" placeholder="XXX">
+          </label>
+
+          <div class="modal-actions">
+            <button
+              type="submit"
+              class="btn btn--submit"
+              id="submit-btn">Submit
+            </button>
+
+            <button
+              type="button"
+              class="btn btn--close"
+              id="close-btn">Cancel
+            </button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+  </body>
+</html>
