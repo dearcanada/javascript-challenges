@@ -41,11 +41,12 @@
   
   --clr-font-book-meta-caption: #b3b3b3;
   --clr-font-book-meta: #fff;
-  --clr-bg-body: #F6F7EB;
-  --clr-bg-book: #393E41;
+  --clr-bg-body: #0e0e0e;
+  --clr-bg-book: #272a2c;
   --clr-book-title: #E94F37;
   --clr-: #fffc31;
-  --clr-: #5C415D;
+  --clr-btn-bg: #E94F37;
+  --clr-btn-bg-hover: #c4402c;
 }
 
 /* ttf = truetype */
