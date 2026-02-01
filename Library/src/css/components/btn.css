@@ -1,0 +1,25 @@
+.btn {
+  border: none;
+  border-radius: .25rem;
+  
+  padding: .15rem .8rem;
+  
+  font-size: var(--step-0);
+}
+
+.btn--remove {
+  background-color: var(--clr-btn-bg);
+  margin-block-start: auto;
+  align-self: end;
+  
+  transition: 250ms ease;
+  
+  &:hover {
+    background-color: var(--clr-btn-bg-hover);
+    translate: 0 -.15rem;
+  }
+  &:active {
+    background-color: var(--clr-btn-bg);
+    translate: 0 .15rem;    
+  }
+}
