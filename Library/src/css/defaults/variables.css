@@ -39,18 +39,38 @@
   --width-l: 90rem;
   --width-custom: 48rem;
   
+  --clr-font-library: #edebeb;
   --clr-font-book-meta-caption: #b3b3b3;
   --clr-font-book-meta: #fff;
+  --clr-font-add-btn-hover: #fff;
   --clr-bg-body: #0e0e0e;
   --clr-bg-book: #272a2c;
+
+  --clr-remove-btn-font: #fff;
+
+  --clr-read-btn-bg: #fff;
+  --clr-read-btn-bg-hover: #e3e3e3;
+  --clr-read-btn-bg-active: #cacaca;
+
+  --clr-cancel-btn-bg: #c4402c;
+  --clr-cancel-btn-bg-hover: #a93625;
+  --clr-cancel-btn-bg-active: #d0442f;
+  --clr-cancel-btn-font-color: #fff;
+
+  --clr-ivalid-input-border: #ff0000;
+
+  --clr-submit-btn-bg: #e3e3e3;
+  --clr-submit-btn-bg-hover: #e3e3e3;
+  
   --clr-book-title: #E94F37;
   --clr-: #fffc31;
+  --clr-btn-outline-focus: #c4402c;
   --clr-btn-bg: #E94F37;
   --clr-btn-bg-hover: #c4402c;
+  --clr-library-h1-selection: #c4402c;
 }
 
 /* ttf = truetype */
-/* otf = opentype */
 @font-face {
   font-family: "Rubik";
   src: url("/public/fonts/Rubik-VariableFont_wght.ttf") format("truetype");
