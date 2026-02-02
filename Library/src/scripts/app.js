@@ -24,13 +24,18 @@ Book.prototype = Object.create({
     return this.readStatus === false ? 'Not read yet' : 'Read yet'; 
   },
   read() {
-    this.readStatus = true;    
+    this.readStatus = true;
+    return this.readStatus; 
   },
 })
 
 const myLibrary = [];
 
 function createBookData(title, author, pages) {
+  title === '' ? title = 'Not specified' : '';
+  author === '' ? author = 'Not specified' : '';
+  pages === '' ? pages = 0 : '';
+
   myLibrary.push(new Book(title, author, pages));  
   renderDOM(myLibrary.at(-1));
 };
@@ -39,6 +44,7 @@ function createBookData(title, author, pages) {
 const dialog = document.querySelector('#dialog');
 const addButton = document.querySelector('#add-btn');
 const removeButtons = [];
+const readButtons = [];
 const catalog = document.querySelector('#catalog-id');
 
 dialog.addEventListener('click', event => {
@@ -47,11 +53,11 @@ dialog.addEventListener('click', event => {
   // Modal window event delegation
   if (target.getAttribute('id') === 'submit-btn') {
     event.preventDefault();
-
+    
     const title = document.querySelector('#title-id');
     const author = document.querySelector('#author-id');
     const pages = document.querySelector('#pages-id');
-    
+
     createBookData(title.value, author.value, pages.value);
     dialog.close();
   };
@@ -68,6 +74,17 @@ function pushCurrentRemoveButton(button) {
   button.addEventListener('click', event => event.target.closest('.book').remove())
 };
 
+function pushCurrentReadButton(button, book) {
+  readButtons.push(button);
+
+  button.addEventListener('click', () => {
+    const readStatusSpan = button.closest('.book').querySelector('.book__status');
+    book.read();
+
+    readStatusSpan.innerHTML = `\n<span>Status:</span> ${book.readInfo()}`;
+  });
+};
+
 // DOM Render
 function renderDOM(book) {
   let bookContentWrapper = document.createElement('article');
@@ -75,16 +92,23 @@ function renderDOM(book) {
   bookContentWrapper.setAttribute('data-uid', book.id);
     
   bookContentWrapper.innerHTML = `\n
-    <h1 class="book__title"><span>The</span> ${book.title}</h1>
+    <h1 class="book__title">${book.title}</h1>
     <span class="book__author"><span>Author:</span> ${book.author}</span>
     <span class="book__pages"><span>Pages:</span> ${book.pages}</span>
     <span class="book__status"><span>Status:</span> ${book.readInfo()}</span>
     <span class="book__id"><span>UID:</span> ${book.id}</span>
-    <button type="button" class="btn btn--remove" data-action-btn="remove-btn">Remove</button>
+    <div class="book__buttons">
+      <button type="button" class="btn btn--read" data-action-btn="read-btn">Read</button>
+      <button type="button" class="btn btn--remove" data-action-btn="remove-btn">Remove</button>
+    <div/>
   `;
 
   catalog.appendChild(bookContentWrapper);
 
-  pushCurrentRemoveButton(bookContentWrapper.querySelector('[data-action-btn]'));
+  pushCurrentRemoveButton(bookContentWrapper.querySelector('[data-action-btn="remove-btn"]'));
+  pushCurrentReadButton(bookContentWrapper.querySelector('[data-action-btn="read-btn"]'), book);
 };
 
+// "remove book" removes a book from DOM only, not from the array
+// "remove book" removes a book from DOM only, not from the array
+// "remove book" removes a book from DOM only, not from the array
