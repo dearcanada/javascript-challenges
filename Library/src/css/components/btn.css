@@ -1,25 +1,107 @@
 .btn {
   border: none;
   border-radius: .25rem;
-  
   padding: .15rem .8rem;
-  
   font-size: var(--step-0);
+
+  transition: 250ms ease;
 }
 
 .btn--remove {
   background-color: var(--clr-btn-bg);
   margin-block-start: auto;
-  align-self: end;
-  
+  color: var(--clr-remove-btn-font);
   transition: 250ms ease;
   
   &:hover {
     background-color: var(--clr-btn-bg-hover);
-    translate: 0 -.15rem;
+    translate: 0 -0.15rem;
   }
   &:active {
     background-color: var(--clr-btn-bg);
     translate: 0 .15rem;    
   }
+  &:focus-visible {
+    background-color: var(--clr-btn-bg-hover);
+    outline: none;
+    scale: 1.075;
+  }
+}
+
+.btn--read {
+  background-color: var(--clr-read-btn-bg);
+  margin-block-start: auto;
+  
+  transition: 250ms ease;
+  
+  &:hover {
+    background-color: var(--clr-read-btn-bg-hover);
+    translate: 0 -0.15rem;
+  }
+  &:active {
+    background-color: var(--clr-read-btn-bg-active);
+    translate: 0 .15rem;    
+  }
+  &:focus-visible {
+    background-color: var(--clr-read-btn-bg-hover);
+    outline: none;
+    scale: 1.075;
+  }
+}
+
+.btn--add {
+  border-radius: 1.5rem;
+  padding-block: var(--space-2xs);
+  padding-inline: var(--space-m);
+
+  transition: 150ms ease;
+
+  &:hover {
+    color: var(--clr-font-add-btn-hover);
+    background-color: var(--clr-btn-bg-hover);
+    translate: 0 -0.15rem;
+  }
+
+  &:active {
+    background-color: var(--clr-btn-bg);
+    translate: 0 .15rem;    
+  }
+  
+  &:focus-visible {
+    outline: none;
+    color: var(--clr-font-add-btn-hover);
+    background-color: var(--clr-btn-bg-hover);
+  }
+}
+
+.btn--cancel {
+  background-color: var(--clr-cancel-btn-bg);
+  color: var(--clr-cancel-btn-font-color);
+  
+  &:focus {
+    background-color: var(--clr-cancel-btn-bg-hover );
+    scale: 1.075;
+    outline: none;
+    animation: btn-pulse infinite 1s;
+  }
+  &:hover {
+    background-color: var(--clr-cancel-btn-bg-hover);
+  }
+}
+
+.btn--submit {
+  &:focus {
+    outline: none;
+    background-color: var(--clr-submit-btn-bg);
+    animation: btn-pulse infinite 1s;
+  }
+  &:hover {
+    background-color: var(--clr-submit-btn-bg-hover);
+  }
+}
+
+@keyframes btn-pulse {
+  0% { scale: 1 }
+  30% { scale: 1.05 }
+  100%  { scale: 1 }
 }

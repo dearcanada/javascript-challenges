@@ -69,3 +69,7 @@ body:has(.create-dialog:open) {
     filter: blur(0);
   }
 }
+
+.invalid-input {
+  border: var(--clr-ivalid-input-border) 2px solid;
+}
