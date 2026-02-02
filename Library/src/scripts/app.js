@@ -68,10 +68,15 @@ dialog.addEventListener('click', event => {
 
 addButton.addEventListener('click', () => dialog.showModal());
 
-function pushCurrentRemoveButton(button) {
+function pushCurrentRemoveButton(button, book) {
   removeButtons.push(button);
 
-  button.addEventListener('click', event => event.target.closest('.book').remove())
+  button.addEventListener('click', event => {
+    event.target.closest('.book').remove();
+    
+    const currentBookIndex = myLibrary.findIndex(bookInstance => bookInstance.id === book.id);
+    myLibrary.splice(currentBookIndex, 1);
+  });
 };
 
 function pushCurrentReadButton(button, book) {
@@ -105,7 +110,7 @@ function renderDOM(book) {
 
   catalog.appendChild(bookContentWrapper);
 
-  pushCurrentRemoveButton(bookContentWrapper.querySelector('[data-action-btn="remove-btn"]'));
+  pushCurrentRemoveButton(bookContentWrapper.querySelector('[data-action-btn="remove-btn"]'), book);
   pushCurrentReadButton(bookContentWrapper.querySelector('[data-action-btn="read-btn"]'), book);
 };
 
