@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/index.css">
+    <script defer src="src/js/app.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>Tic Tac Toe</h1>
+      
+      <section class="board" id="board-id">
+        <h2 class="hidden">Game board controls</h2>
+        
+        <div class="board__area"></div>
+        <div class="board__area"></div>
+        <div class="board__area"></div>
+        <div class="board__area"></div>
+        <div class="board__area"></div>
+        <div class="board__area"></div>
+        <div class="board__area"></div>
+        <div class="board__area"></div>
+        <div class="board__area"></div>
+      </section>
+      
+      <dialog id="popover">
+        <form method="dialog">
+          <h1>Set player names</h1>
+
+          <label for="player-one" id="player-label">Player 1</label>
+          <input type="text" name="player-one" id="player-one">
+
+          <label for="player-two" id="player-label">Player 2</label>
+          <input type="text" name="player-two" id="player-two">
+
+          <button type="submit" id="submit-button">Submit</button>
+        </form>
+      </dialog>
+      
+      <div class="controls" id="controls-id">
+        <button type="button" class="btn btn--start" id="start-btn">Start</button>
+        <button type="button" class="btn btn--reset" id="reset-btn">Reset</button>
+      </div>
+    </main>
+  </body>
+</html>
