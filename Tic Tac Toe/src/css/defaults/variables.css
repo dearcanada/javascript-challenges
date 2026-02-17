@@ -39,9 +39,29 @@
   --width-l: 90rem;
   --width-custom: 48rem;
 
+  --clr-dialog-label:rgb(77, 77, 77);
+
+  --clr-svg-mark-cross: #2b56ff;
+  --clr-svg-mark-cross-hover: #264ce1;
+  --clr-svg-mark-circle: #fd3434;
+  --clr-svg-mark-circle-hover: #e32e2e;
+
   --board-area-bg: #ededed;
   --board-area-bg-hover: #dcdcdc;
   --board-area-bg-active: #cecdcd;
+  
+  --clr-btn-cancel-bg: #000;
+
+  --clr-btn-submit-bg: #000;
+
+  --clr-btn-base-font: #fff;
+  --btn-base-bg: #4167ff;
+  --btn-base-bg-hover: #3e5fe6;
+  --btn-base-bg-active: #334eba;
+  
+  --btn-reset-bg: #f93232;
+  --btn-reset-bg-hover: #e02f2f;
+  --btn-reset-bg-active: #b92a2a;
 }
 
 /* ttf = truetype */
