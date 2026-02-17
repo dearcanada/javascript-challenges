@@ -18,3 +18,29 @@
     background-color: var(--board-area-bg-active);
   }
 }
+
+/* SVGs styles */
+.mark {
+  transition: .75s cubic-bezier(0.075, 0.82, 0.165, 1);  
+  scale: 1;
+  @starting-style {
+    scale: .75;
+  };
+  &:active {
+    scale: .75;
+  }
+}
+
+.cross {
+  stroke: var(--clr-svg-mark-cross);
+  &:hover {
+    stroke: var(--clr-svg-mark-cross-hover);
+  }
+}
+
+.circle {
+  stroke: var(--clr-svg-mark-circle);
+  &:hover {
+    stroke: var(--clr-svg-mark-circle-hover);
+  }
+}
