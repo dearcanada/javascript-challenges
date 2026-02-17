@@ -1,34 +1,43 @@
+const popoverElement = document.querySelector('#popover');
+popoverElement.showModal();
+
 const GameboardUI = (function() {
   const boardButtons = document.querySelector('#controls-id');
   const startButton = document.querySelector('#start-btn');
-  const gameboardElement = document.querySelector('#board-id');
   const popoverElement = document.querySelector('#popover');
   const playerOneInput = document.querySelector('#player-one');
   const playerTwoInput = document.querySelector('#player-two');
   const submitButton = document.querySelector('#submit-button');
-  const playerLabel = document.querySelector('#player-label');
   const resetButton = document.querySelector('#reset-btn');
+  const cancelButton = document.querySelector('#cancel-button');
+  const boardElement = document.querySelector('#board-id');
 
   function renderDOM() {
     boardButtons.addEventListener('click', event => {
       const target = event.target;
 
       if (target === startButton) {
-        popoverElement.showModal();
+        if (!Gameboard.getGameStatus()) {
+          popoverElement.showModal();
+        } else {
+          confirm('Game is already running in the console.\n Restart the game?') ?
+            resetButton.click() : '';
+        };
       };
       if (target === resetButton) {
         Gameboard.resetGame();
+        boardElement.classList.remove('board');
+        boardElement.innerHTML = '';                
+        
+        startButton.classList.remove('hidden');
+        resetButton.classList.add('hidden');
       };
     });
 
-    gameboardElement.addEventListener('click', event => {
-
+    cancelButton.addEventListener('click', () => {
+      popoverElement.close()
     });
-    
-    popoverElement.addEventListener('click', event => {
-
-    });
-
+      
     submitButton.addEventListener('click', event => {
       event.preventDefault();
 
@@ -36,11 +45,65 @@ const GameboardUI = (function() {
         throw Error(`Input fields cannot be empty.`);
       };
 
+      resetButton.classList.remove('hidden');
+      startButton.classList.add('hidden');
+
       const playerOneName = playerOneInput.value;
       const playerTwoName = playerTwoInput.value;
 
+      boardElement.classList.add('board');
+      boardElement.innerHTML = 
+      `
+        <h2 class="hidden">Game board controls</h2>
+        <div class="board__area" data-row="1" data-column="1"></div>
+        <div class="board__area" data-row="1" data-column="2"></div>
+        <div class="board__area" data-row="1" data-column="3"></div>
+        <div class="board__area" data-row="2" data-column="1"></div>
+        <div class="board__area" data-row="2" data-column="2"></div>
+        <div class="board__area" data-row="2" data-column="3"></div>
+        <div class="board__area" data-row="3" data-column="1"></div>
+        <div class="board__area" data-row="3" data-column="2"></div>
+        <div class="board__area" data-row="3" data-column="3"></div>
+      `;
+      
       Gameboard.startGame(playerOneName, playerTwoName);
       popoverElement.close();
+    });
+    
+    boardElement.addEventListener('click', event => {
+      const target = event.target;
+      
+      if (!Gameboard.getGameStatus()) return;
+      if (Gameboard.getGameSpectateState() === true) return;
+      if (target === boardElement) return;
+      if (target.innerHTML !== '') return;
+
+      const cross = 
+      `
+        <div class="cross mark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <path d="M 15 15 L 85 85" stroke-width="15" stroke-linecap="round"/>
+            <path d="M 85 15 L 15 85" stroke-width="15" stroke-linecap="round"/>
+          </svg>
+        </div>
+      `;
+      
+      const circle = `
+        <div class="circle mark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" fill="none" stroke-width="15"/>
+          </svg>
+        </div>
+      `;
+
+            
+      if (Gameboard.currentPlayerTurn().mark === 'X') {
+        Gameboard.turn(target.dataset.row, target.dataset.column);
+        target.innerHTML = cross;
+      } else {
+        Gameboard.turn(target.dataset.row, target.dataset.column);
+        target.innerHTML = circle;
+      };
     });
   };
 
@@ -49,13 +112,14 @@ const GameboardUI = (function() {
   };
 })();
 
-const Gameboard = (function(doc) {
+const Gameboard = (function() {
   const boardData =[['.', '.', '.'], ['.', '.', '.'], ['.', '.', '.']];
   let playerOne = null;
   let playerTwo = null;
   let currentTurn = null;
   let gameStatus = false;
-
+  let gameSpectateState = false;
+  
   const log = (message) => {
     console.log(`[${Date.now()}] Logger: ${message}`);
   };
@@ -66,7 +130,7 @@ const Gameboard = (function(doc) {
     };
 
     if (!playerOneName || !playerTwoName) {
-      return log('Function\'s arguments (2) cannot be empty.')
+      return log(`Function parameters (${Gameboard.startGame.length}) cannot be empty.`);
     };
     
     playerOne = createPlayer(playerOneName, 'X');
@@ -78,18 +142,19 @@ const Gameboard = (function(doc) {
     log('Starting game...');
   };
 
-  const turn = () => { 
+  const turn = (row, column) => { 
     if (gameStatus === false) {
       return log('Can\'t do a turn. You should start a new game!');
     };
-    
-    const row = prompt(`${currentTurn.name}'s turn. Row (1-3)?`);
-    const column = prompt(`${currentTurn.name}'s turn. Column (1-3)?`);
-
+    if (!row || !column) {
+      return (`Function parameters (${Gameboard.startGame.length}) cannot be empty.`);
+    };
+    if (gameSpectateState === true) {
+      return log('Can\'t do a turn when the game is over.');
+    };
     if (canAddMark(row, column) === false) {
       return log('Can\'t overwrite a mark');
     };
-    
     if (currentTurn === playerOne) {
       boardData[row - 1].splice(column - 1, 1, playerOne.mark);
       checkBoardData(currentTurn);
@@ -103,7 +168,7 @@ const Gameboard = (function(doc) {
     };
   };
 
-  function canAddMark(boardRow, boardCol) {
+  const canAddMark = (boardRow, boardCol) => {
     if (
       boardData[boardRow - 1][boardCol - 1] === playerOne.mark ||
       boardData[boardRow - 1][boardCol - 1] === playerTwo.mark
@@ -114,9 +179,13 @@ const Gameboard = (function(doc) {
     };
   };
 
+  const getGameStatus = () => gameStatus;
+  const getGameSpectateState = () => gameSpectateState;
+
   const checkBoardData = ( { mark } ) => {
     function logWinner() {
-      resetGame(`${currentTurn.name} wins!`);
+      log(`${currentTurn.name} wins!`);
+      gameSpectateState = true;
     };
 
     for (let i = 0; i < 3; i++) {
@@ -168,24 +237,23 @@ const Gameboard = (function(doc) {
     if (!gameStatus) {
       return log('Start a new game to use this option!');
     } else {
-      return currentTurn.name;
+      return currentTurn;
     };
   };
   
-  function createPlayer(playerName, playerMark) {
+  const createPlayer = (playerName, playerMark) => {
     return {
       name: playerName,
       mark: playerMark,
     };
   };
 
-  function resetGame(message) {
+  const resetGame = (message) => {
     if (!gameStatus) {
       return log('Can\'t reset. Start a new game before!');
     };
-    
     if (!message) {
-      message = 'Resetting game...';
+      message = 'Resetting the game...';
     };
     
     for (row of boardData) {
@@ -195,6 +263,7 @@ const Gameboard = (function(doc) {
     };
     
     gameStatus = false;
+    gameSpectateState = false;
     currentTurn = null;
     playerOne = null;
     playerTwo = null;
@@ -205,9 +274,6 @@ const Gameboard = (function(doc) {
   GameboardUI.renderDOM();
   
   return {
-    startGame, turn, viewBoard, currentPlayerTurn, resetGame,
+    startGame, turn, viewBoard, currentPlayerTurn, resetGame, getGameStatus, getGameSpectateState,
   };
 })();
-// The last player that has a turn defines the winner or a tie. 
-// This way of thinking helped me to make validation function way easier
-// (i was tryna pass two object or some other bs for some reason) 
