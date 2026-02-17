@@ -1,6 +1,3 @@
-const popoverElement = document.querySelector('#popover');
-popoverElement.showModal();
-
 const GameboardUI = (function() {
   const boardButtons = document.querySelector('#controls-id');
   const startButton = document.querySelector('#start-btn');
