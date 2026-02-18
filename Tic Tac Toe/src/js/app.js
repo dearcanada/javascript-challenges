@@ -8,6 +8,7 @@ const GameboardUI = (function() {
   const resetButton = document.querySelector('#reset-btn');
   const cancelButton = document.querySelector('#cancel-button');
   const boardElement = document.querySelector('#board-id');
+  const spanWinner = document.querySelector('#winner-id');
 
   function renderDOM() {
     boardButtons.addEventListener('click', event => {
@@ -17,10 +18,11 @@ const GameboardUI = (function() {
         if (!Gameboard.getGameStatus()) {
           popoverElement.showModal();
         } else {
-          confirm('Game is already running in the console.\n Restart the game?') ?
+          confirm('Game is already running in the console.\nRestart the game?') ?
             resetButton.click() : '';
         };
       };
+      
       if (target === resetButton) {
         Gameboard.resetGame();
         boardElement.classList.remove('board');
@@ -28,6 +30,7 @@ const GameboardUI = (function() {
         
         startButton.classList.remove('hidden');
         resetButton.classList.add('hidden');
+        spanWinner.textContent = '';
       };
     });
 
@@ -38,7 +41,7 @@ const GameboardUI = (function() {
     submitButton.addEventListener('click', event => {
       event.preventDefault();
 
-      if (!playerOneInput.value && !playerTwoInput.value) {
+      if (!playerOneInput.value || !playerTwoInput.value) {
         throw Error(`Input fields cannot be empty.`);
       };
 
@@ -71,12 +74,11 @@ const GameboardUI = (function() {
       const target = event.target;
       
       if (!Gameboard.getGameStatus()) return;
-      if (Gameboard.getGameSpectateState() === true) return;
+      if (Gameboard.isGameOver() === true) return;
       if (target === boardElement) return;
       if (target.innerHTML !== '') return;
 
-      const cross = 
-      `
+      const cross = `
         <div class="cross mark">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <path d="M 15 15 L 85 85" stroke-width="15" stroke-linecap="round"/>
@@ -92,7 +94,6 @@ const GameboardUI = (function() {
           </svg>
         </div>
       `;
-
             
       if (Gameboard.currentPlayerTurn().mark === 'X') {
         Gameboard.turn(target.dataset.row, target.dataset.column);
@@ -101,11 +102,27 @@ const GameboardUI = (function() {
         Gameboard.turn(target.dataset.row, target.dataset.column);
         target.innerHTML = circle;
       };
+      
+      if (Gameboard.getWinner() === 'X') {
+        spanWinner.textContent = 'Blue wins!';
+      } else if (Gameboard.getWinner() === 'O') {
+        spanWinner.textContent = 'Red wins!';
+      } else if (Gameboard.getWinner() === 'Tie') {
+        spanWinner.textContent = 'Tie!';
+      };
     });
   };
 
+  const resetUI = () => {
+    spanWinner.textContent = '';
+    boardElement.innerHTML = '';
+    boardElement.classList.remove('board');
+    startButton.classList.remove('hidden');
+    resetButton.classList.add('hidden');
+  };
+
   return {
-    renderDOM, 
+    renderDOM, resetUI,
   };
 })();
 
@@ -115,13 +132,19 @@ const Gameboard = (function() {
   let playerTwo = null;
   let currentTurn = null;
   let gameStatus = false;
-  let gameSpectateState = false;
-  
+  let gameSpectateState = {
+    gameOver: false,
+    winner: null,
+  };
+
   const log = (message) => {
     console.log(`[${Date.now()}] Logger: ${message}`);
   };
 
   const startGame = (playerOneName, playerTwoName) => {
+    if (isGameOver() === true) {
+      return log('Game is in the spectate state. Reset to start a new one.')
+    }
     if (gameStatus === true) {
       return log('Game is already running!');
     };
@@ -146,7 +169,7 @@ const Gameboard = (function() {
     if (!row || !column) {
       return (`Function parameters (${Gameboard.startGame.length}) cannot be empty.`);
     };
-    if (gameSpectateState === true) {
+    if (gameSpectateState.gameOver === true) {
       return log('Can\'t do a turn when the game is over.');
     };
     if (canAddMark(row, column) === false) {
@@ -177,12 +200,18 @@ const Gameboard = (function() {
   };
 
   const getGameStatus = () => gameStatus;
-  const getGameSpectateState = () => gameSpectateState;
+  const isGameOver = () => gameSpectateState.gameOver;
+  const getWinner = () => gameSpectateState.winner;
 
   const checkBoardData = ( { mark } ) => {
-    function logWinner() {
-      log(`${currentTurn.name} wins!`);
-      gameSpectateState = true;
+    function logWinner(winnerData) {
+      if (!winnerData === ' Tie') {
+        log(`${currentTurn.name} wins!`);        
+      } else {
+        log('It\'s a Tie. Game is over.');        
+      };
+      gameSpectateState.gameOver = true;
+      gameSpectateState.winner = winnerData;
     };
 
     for (let i = 0; i < 3; i++) {
@@ -192,28 +221,35 @@ const Gameboard = (function() {
         boardData[i][1] === mark && 
         boardData[i][2] === mark
       ) {
-        return logWinner();
+        return logWinner(mark);
       } else if (
         // Columns
         boardData[0][i] === mark &&
         boardData[1][i] === mark && 
         boardData[2][i] === mark
       ) {
-        return logWinner();
+        return logWinner(mark);
       } else if (
         // Left diagonal
         boardData[0][0] === mark &&
         boardData[1][1] === mark && 
         boardData[2][2] === mark
       ) {
-        return logWinner();
+        return logWinner(mark);
       } else if (
         // Right diagonal
         boardData[0][2] === mark &&
         boardData[1][1] === mark && 
         boardData[2][0] === mark
       ) {
-        return logWinner();
+        return logWinner(mark);
+      } else if (
+        !boardData[0].includes('.') &&
+        !boardData[1].includes('.') &&
+        !boardData[2].includes('.')
+      ) {
+        logWinner('Tie');
+        return false;
       };
     };
 
@@ -260,7 +296,8 @@ const Gameboard = (function() {
     };
     
     gameStatus = false;
-    gameSpectateState = false;
+    gameSpectateState.gameOver = false;
+    gameSpectateState.winner = null;
     currentTurn = null;
     playerOne = null;
     playerTwo = null;
@@ -271,6 +308,13 @@ const Gameboard = (function() {
   GameboardUI.renderDOM();
   
   return {
-    startGame, turn, viewBoard, currentPlayerTurn, resetGame, getGameStatus, getGameSpectateState,
+    startGame,
+    turn, 
+    viewBoard, 
+    currentPlayerTurn, 
+    resetGame, 
+    getGameStatus,
+    isGameOver, 
+    getWinner, 
   };
 })();
