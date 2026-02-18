@@ -8,7 +8,7 @@ main {
 }
 
 /* To select all elements, but the first and empty */
-main > * + *:not(:last-child):not(:empty) {
+main > * + *:not(:last-child, :empty, .winner) {
   margin-block-start: var(--space-s);
 }
 
