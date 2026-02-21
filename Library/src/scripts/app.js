@@ -1,16 +1,18 @@
-function Book(title, author, pages) {
-  if (!new.target) {
-    throw Error('The "new" operator wasn\'t used.')
-  }
-  
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readStatus = false;
-  this.id = crypto.randomUUID();
-};
+class Book {
+  title;
+  author;
+  pages;
+  readStatus = false;
+  id = crypto.randomUUID();
 
-Book.prototype = Object.create({
+  constructor(title, author, pages) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readStatus;
+    this.id;
+  };
+
   info() {
     let infoString = `The ${this.title} by ${this.author}, ${this.pages} pages`;
     
@@ -19,15 +21,17 @@ Book.prototype = Object.create({
     } else {
       return infoString.concat(', read yet.');
     };
-  },
+  };
+
   readInfo() {
     return this.readStatus === false ? 'Not read yet' : 'Read yet'; 
-  },
+  };
+
   read() {
     this.readStatus = true;
     return this.readStatus; 
-  },
-})
+  };
+};
 
 const myLibrary = [];
 
@@ -113,7 +117,3 @@ function renderDOM(book) {
   pushCurrentRemoveButton(bookContentWrapper.querySelector('[data-action-btn="remove-btn"]'), book);
   pushCurrentReadButton(bookContentWrapper.querySelector('[data-action-btn="read-btn"]'), book);
 };
-
-// "remove book" removes a book from DOM only, not from the array
-// "remove book" removes a book from DOM only, not from the array
-// "remove book" removes a book from DOM only, not from the array
