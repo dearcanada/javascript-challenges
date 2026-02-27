@@ -1,0 +1,61 @@
+.menu-tab {
+  & > * {
+    outline: red 2px;
+  };
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+
+  max-width: var(--width-l);
+  margin-inline: auto;
+}
+
+.item {
+  display: grid;
+  grid-template: 
+    3.5rem 1fr /
+    10rem minmax(15rem, 1fr);
+  height: 11rem;
+  column-gap: var(--space-s);
+
+  border-radius: 0.5rem;
+  background-color: #1e1e1e;
+  padding: var(--space-xs);
+
+  flex-grow: 1;
+  flex-basis: 40%;
+
+}
+
+.item__preview {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  
+  min-width: 10rem;
+  grid-row: 1 / 3;
+}
+
+.item__desc--placeholder-one {
+  background-image: url("/src/public/imgs/pizza3.png");
+}
+
+.item__desc--placeholder-two {
+  background-image: url("/src/public/imgs/pizza4.png");
+}
+
+.item__desc--placeholder-three {
+  background-image: url("/src/public/imgs/pizza6.png");
+}
+
+.item__desc--placeholder-four {
+  background-image: url("/src/public/imgs/pizza5.png");
+}
+
+.item__heading {
+  font-size: var(--step-1);
+  font-weight: var(--fw-500);
+
+  align-self: end;
+}
