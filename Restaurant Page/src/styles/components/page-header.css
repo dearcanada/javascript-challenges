@@ -1,9 +1,0 @@
-.page-header {
-  margin-block-start: var(--space-l);
-
-  & > nav {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-m);
-  }
-}
