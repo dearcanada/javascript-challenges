@@ -1,0 +1,52 @@
+.new-group-modal {
+  background-color: var(--clr-component-bg-primary); 
+  color: var(--clr-font-primary);
+ 
+  padding: var(--space-s);
+  background-color: var(--clr-component-bg-primary);
+  border: none;
+  border-radius: 1rem;
+  width: 20rem;
+
+  & > form {
+    display: grid;
+    grid-template: 
+      auto auto / auto 1fr;
+    gap: var(--space-s);
+    align-items: center;
+  }
+}
+
+.new-group-modal__input {
+  background-color: var(--clr-bg-new-group-modal-input);
+  border: none;
+  border-radius: 1rem;
+  color: var(--clr-font-primary);
+  height: 1.65rem;
+  padding-inline: var(--space-s);
+
+  transition: 250ms ease;
+  &:hover {
+    background-color: var(--clr-bg-new-group-modal-input-hover);
+  }
+  &:focus {
+    outline: none;
+    background-color: var(--clr-bg-new-group-modal-input-focus);
+  }
+}
+
+.setup-btn-wrapper {
+  grid-column: 1 / -1;
+}
+
+.new-group-modal__label {
+  position: relative;
+  
+  &::after {
+    content: "*";
+    position: absolute;
+    left: 106%;
+    color: var(--clr-font-setup-modal-asterisk);
+    font-weight: var(--fw-600);
+  }
+}

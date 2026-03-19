@@ -1,0 +1,10 @@
+.main-wrapper {
+  background-color: var(--clr-component-bg-primary);
+
+  max-width: var(--width-custom);
+  width: 100%;
+  min-width: calc(var(--width-custom) - 11rem);
+  
+  padding: var(--space-s);
+  border-radius: 1rem;
+}

@@ -1,0 +1,68 @@
+.btn {
+  background-color: var(--clr-bg-btn-transparent);
+  color: var(--clr-font-btn);
+
+  border: 0.075rem solid var(--clr-btn-primary);
+  border-radius: 1rem;
+  padding: calc(var(--space-2xs) - 0.15rem) var(--space-s);
+  
+  transition: 250ms ease;
+  &:hover {
+    background-color: var(--clr-bg-btn-transparent-hover);
+    border: 0.075rem solid var(--clr-btn-primary-hover);
+  }
+  &:focus {
+    outline: none;
+    background-color: var(--clr-bg-btn-transparent-focus);
+    border: 0.075rem solid var(--clr-btn-primary-focus);
+  }
+}
+
+.btn--delete {
+  border: 0.075rem solid var(--clr-bg-btn-delete);
+  background-color: var(--clr-bg-btn-delete-transparent); 
+  
+  &:hover {
+    border: 0.075rem solid var(--clr-bg-btn-delete-hover);
+    background-color: var(--clr-bg-btn-delete-transparent-hover);
+  }
+  &:focus {
+    outline: none;
+    border: 0.075rem solid var(--clr-bg-btn-delete-focus);
+    background-color: var(--clr-bg-btn-delete-transparent-focus);
+  }
+}
+
+.groups__btn--group-action {
+  background: none;
+  border: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--padding-group-actions-svg);
+  vertical-align: middle;
+  
+  &:hover {
+    background-color: var(--clr-bg-btn-group-actions-hover);
+    border: none;
+  }
+  &:focus {
+    outline: none;
+    border: none;
+    background-color: var(--clr-bg-btn-group-actions-focus);
+  }
+}
+
+.setup-btn-wrapper--cancel {
+  border: 0.075rem solid var(--clr-bg-btn-cancel);
+  background-color: var(--clr-bg-btn-cancel-transparent); 
+  
+  &:hover {
+    border: 0.075rem solid var(--clr-bg-btn-cancel-hover);
+    background-color: var(--clr-bg-btn-cancel-transparent-hover);
+  }
+  &:focus {
+    outline: none;
+    border: 0.075rem solid var(--clr-bg-btn-cancel-focus);
+    background-color: var(--clr-bg-btn-cancel-transparent-focus);
+  }
+}

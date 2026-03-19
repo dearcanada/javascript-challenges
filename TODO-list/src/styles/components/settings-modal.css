@@ -1,0 +1,26 @@
+.settings-modal > form {
+  position: relative;
+    
+  & > .settings-modal__description {
+    display: block;
+    color: var(--clr-font-primary);
+    margin-block-end: var(--space-2xs);
+  }
+}
+
+.settings-modal__close-icon {
+  position: absolute;
+  right: -0.5rem;
+  top: -0.5rem;
+  
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-inline-start: auto;
+  background: none;
+  border: none;
+  padding: 0.4rem;
+  
+  clip-path: circle();
+}
+
+/* hover is needed */

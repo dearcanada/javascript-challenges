@@ -1,0 +1,15 @@
+.groups {
+  color: var(--clr-font-primary);
+  padding: var(--space-3xs) 0;
+  background-color: var(--clr-bg-groups-primary);
+  border-radius: 0.4rem;
+}
+
+.groups > .groups__item {
+  display: flex;
+  justify-content: space-between;
+  
+  padding-inline-start: var(--space-s);
+  padding-inline-end: var(--space-2xs);
+}
+

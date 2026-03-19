@@ -1,0 +1,3 @@
+.main-nav:has( + main > .groups) {
+  margin-block-end: var(--space-s);
+}
