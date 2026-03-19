@@ -1,0 +1,15 @@
+body {
+  height: 100svh;
+  display: grid;
+  place-items: center;
+}
+
+.main-wrapper {
+  margin-inline: auto;
+}
+
+.center-modal {
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
