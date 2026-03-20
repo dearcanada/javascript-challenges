@@ -1,4 +1,6 @@
 .new-group-modal {
+  min-width: 25rem;
+  
   background-color: var(--clr-component-bg-primary); 
   color: var(--clr-font-primary);
  
@@ -6,8 +8,7 @@
   background-color: var(--clr-component-bg-primary);
   border: none;
   border-radius: 1rem;
-  width: 20rem;
-
+  
   & > form {
     display: grid;
     grid-template: 
@@ -18,35 +19,23 @@
 }
 
 .new-group-modal__input {
-  background-color: var(--clr-bg-new-group-modal-input);
+  background-color: var(--clr-bg-modal-input);
   border: none;
   border-radius: 1rem;
   color: var(--clr-font-primary);
-  height: 1.65rem;
+  height: 1.8rem;
   padding-inline: var(--space-s);
 
   transition: 250ms ease;
   &:hover {
-    background-color: var(--clr-bg-new-group-modal-input-hover);
+    background-color: var(--clr-bg-modal-input-hover);
   }
   &:focus {
     outline: none;
-    background-color: var(--clr-bg-new-group-modal-input-focus);
+    background-color: var(--clr-bg-modal-input-focus);
   }
 }
 
 .setup-btn-wrapper {
   grid-column: 1 / -1;
-}
-
-.new-group-modal__label {
-  position: relative;
-  
-  &::after {
-    content: "*";
-    position: absolute;
-    left: 106%;
-    color: var(--clr-font-setup-modal-asterisk);
-    font-weight: var(--fw-600);
-  }
 }
