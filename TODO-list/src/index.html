@@ -13,7 +13,7 @@
 
         <dialog class="new-group-modal center-modal modal-base" id="group-setup-id">
           <form method="dialog">
-            <label for="group-name-id" class="new-group-modal__label">Name</label>
+            <label for="group-name-id" class="new-group-modal__label label-required-asterisk">Name</label>
             <input
               class="new-group-modal__input"
               type="text"
@@ -22,8 +22,8 @@
               id="group-name-id">
 
             <div class="setup-btn-wrapper">
-              <button type="submit" class="btn setup-btn-wrapper--submit" id="btn-setup-submit">Submit</button>
-              <button type="button" class="btn setup-btn-wrapper--cancel" id="btn-setup-cancel">Cancel</button>
+              <button type="submit" class="btn" id="btn-setup-submit">Submit</button>
+              <button type="button" class="btn btn--modal-cancel" id="btn-setup-cancel">Cancel</button>
             </div>
           </form>
         </dialog>
@@ -31,6 +31,8 @@
       
       <main>
         <ul class="groups" id="groups-id"></ul>
+
+
       </main>
 
       <dialog class="settings-modal center-modal modal-base" id="settings-modal-id">
@@ -42,8 +44,25 @@
             </svg>
           </button>
           <span class="settings-modal__description">Available actions:</span>
-          <button class="btn btn--rename" type="button" id="btn-rename">Change name</button>
+          <button class="btn btn--change-name" type="button" id="btn-change-name">Change name</button>
           <button class="btn btn--delete" type="button" id="btn-delete">Delete</button>
+        </form>
+      </dialog>
+
+      <dialog class="rename-group-modal center-modal helper-modal" id="rename-modal-id">
+        <form method="dialog" class="rename-group-form helper-form">
+          <label class="rename-group-form__label label-required-asterisk">New name:</label>
+          <input
+            type="text"
+            class="rename-group-form__input helper-form-input"
+            required
+            name="rename-input"
+            id="rename-input-id">
+      
+          <div class="rename-group-btn-wrapper">
+            <button class="btn" type="submit" id="rename-submit-btn">Submit</button>
+            <button class="btn btn--modal-cancel" type="button" id="rename-cancel-btn">Cancel</button>
+          </div>
         </form>
       </dialog>
     </div>
