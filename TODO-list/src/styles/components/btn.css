@@ -33,13 +33,14 @@
   }
 }
 
-.groups__btn--group-action {
+.group__btn--group-action {
   background: none;
   border: none;
   width: 1.5rem;
   height: 1.5rem;
   padding: var(--padding-group-actions-svg);
   vertical-align: middle;
+  margin-block-end: auto;
   
   &:hover {
     background-color: var(--clr-bg-btn-group-actions-hover);
@@ -52,7 +53,7 @@
   }
 }
 
-.setup-btn-wrapper--cancel {
+.btn--modal-cancel {
   border: 0.075rem solid var(--clr-bg-btn-cancel);
   background-color: var(--clr-bg-btn-cancel-transparent); 
   

@@ -1,3 +1,11 @@
-.main-nav:has( + main > .groups) {
+.main-nav:has( + main > ul:not(:empty)) {
   margin-block-end: var(--space-s);
+}
+
+.main-nav {
+  display: flex;
+  column-gap: var(--space-s);
+  & > * {
+    flex: 1 1 50%;
+  }
 }
