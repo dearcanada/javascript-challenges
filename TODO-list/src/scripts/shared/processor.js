@@ -28,7 +28,11 @@ const removeNote = (note, group) => {
 };
 
 const renameGroup = (oldName, newName) => {
-  projects[oldName] = newName;
+  Object.defineProperty(projects, newName, {
+    value: projects[oldName],
+    configurable: true,
+  });
+  delete projects[oldName];
 };
 
 const getProjects = () => projects;

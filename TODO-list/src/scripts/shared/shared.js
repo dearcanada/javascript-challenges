@@ -9,3 +9,4 @@ export const log = (message) => {
 
 /* DOM Shared */ 
 export const groupsList = document.querySelector('#groups-id');
+export const mainElement = document.querySelector('main');
