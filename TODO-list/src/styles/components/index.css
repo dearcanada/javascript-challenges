@@ -1,6 +1,12 @@
 @import url("main-nav.css");
 @import url("btn.css");
 @import url("main-wrapper.css");
-@import url("groups.css");
 @import url("settings-modal.css");
+
+@import url("./groups/index.css");
+@import url("./notes/index.css");
+
+@import url("./modal_blocks/index.css");
 @import url("new-group-modal.css");
+@import url("rename-group-form.css");
+@import url("rename-group-modal.css");
