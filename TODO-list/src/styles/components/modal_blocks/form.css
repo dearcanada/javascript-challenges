@@ -1,0 +1,38 @@
+.helper-form {
+  display: grid;
+  grid-template: 
+    auto auto / auto 1fr;
+  gap: var(--space-s);
+  align-items: center;
+}
+
+.helper-form-input {
+  background-color: var(--clr-bg-modal-input);
+  border: none;
+  border-radius: 1rem;
+  color: var(--clr-font-primary);
+  height: 1.8rem;
+  padding-inline: var(--space-s);
+
+  transition: 250ms ease;
+  &:hover {
+    background-color: var(--clr-bg-modal-input-hover);
+  }
+  &:focus {
+    outline: none;
+    background-color: var(--clr-bg-modal-input-focus);
+  }
+}
+
+/* Shared asterisk for required elements */
+.label-required-asterisk {
+  position: relative;
+  
+  &::after {
+    content: "*";
+    position: absolute;
+    left: 106%;
+    color: var(--clr-font-setup-modal-asterisk);
+    font-weight: var(--fw-600);
+  }
+}
