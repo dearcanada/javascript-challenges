@@ -1,0 +1,14 @@
+.group {
+  display: flex;
+  justify-content: space-between;
+  
+  padding-inline-start: var(--space-s);
+  padding-inline-end: var(--space-2xs);
+  padding-block: var(--space-3xs);
+  background-color: var(--clr-bg-groups-primary);
+  border-radius: 0.4rem;
+}
+
+.group:not(:last-child) {
+  margin-block-end: var(--space-3xs);
+}

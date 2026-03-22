@@ -1,0 +1,1 @@
+export const mainElement = document.querySelector('#content');

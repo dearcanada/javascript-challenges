@@ -1,0 +1,10 @@
+.wrapper {
+  display: grid;
+  grid-template: 
+    min-content 1fr / auto;
+  height: 100svh;
+}
+
+main {
+  align-self: center;
+}

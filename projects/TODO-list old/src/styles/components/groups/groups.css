@@ -1,0 +1,7 @@
+.groups {
+  color: var(--clr-font-primary);
+  
+  &:not(:empty) {
+    padding: var(--space-3xs) 0;
+  }
+}

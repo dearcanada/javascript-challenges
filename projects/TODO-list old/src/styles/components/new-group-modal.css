@@ -1,0 +1,41 @@
+.new-group-modal {
+  min-width: 25rem;
+  
+  background-color: var(--clr-component-bg-primary); 
+  color: var(--clr-font-primary);
+ 
+  padding: var(--space-s);
+  background-color: var(--clr-component-bg-primary);
+  border: none;
+  border-radius: 1rem;
+  
+  & > form {
+    display: grid;
+    grid-template: 
+      auto auto / auto 1fr;
+    gap: var(--space-s);
+    align-items: center;
+  }
+}
+
+.new-group-modal__input {
+  background-color: var(--clr-bg-modal-input);
+  border: none;
+  border-radius: 1rem;
+  color: var(--clr-font-primary);
+  height: 1.8rem;
+  padding-inline: var(--space-s);
+
+  transition: 250ms ease;
+  &:hover {
+    background-color: var(--clr-bg-modal-input-hover);
+  }
+  &:focus {
+    outline: none;
+    background-color: var(--clr-bg-modal-input-focus);
+  }
+}
+
+.setup-btn-wrapper {
+  grid-column: 1 / -1;
+}

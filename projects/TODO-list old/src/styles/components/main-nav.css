@@ -1,0 +1,11 @@
+.component__nav:has( + main > ul:not(:empty)) {
+  margin-block-end: var(--space-s);
+}
+
+.component__nav {
+  display: flex;
+  column-gap: var(--space-s);
+  & > * {
+    flex: 1 1 50%;
+  }
+}

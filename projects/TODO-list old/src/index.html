@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO App</title>
+  </head>
+  <body>
+    <main class="page-wrapper">
+      <div class="component">
+        <nav class="component__nav" id="component__nav-id">
+          <button class="btn component__nav__btn--groups" id="btn-groups" type="button" data-forTab="groups">Groups</button>
+          <button class="btn component__nav__btn--new" id="btn-new" type="button" data-forTab="newGroup">New group</button>
+        </nav>
+        
+        <div class="component__content">
+          <ul class="groups" id="groups-id"></ul>
+          <ul class="notes" id="notes-id"></ul>
+        </div>
+      </div>
+
+      <dialog class="new-group-modal center-modal modal-base" id="group-setup-id">
+        <form method="dialog">
+          <label for="group-name-id" class="new-group-modal__label label-required-asterisk">Name</label>
+          <input
+            class="new-group-modal__input"
+            type="text"
+            name="group-name"
+            required
+            id="group-name-id">
+
+          <div class="setup-btn-wrapper">
+            <button type="submit" class="btn" id="btn-setup-submit">Submit</button>
+            <button type="button" class="btn btn--modal-cancel" id="btn-setup-cancel">Cancel</button>
+          </div>
+        </form>
+      </dialog>
+
+      <dialog class="settings-modal center-modal modal-base" id="settings-modal-id">
+        <form method="dialog">
+          <button class="settings-modal__close-icon" type="button" id="close-settings-modal-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+              <path d="M 1 1 L 9 9" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M 9 1 L 1 9" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <span class="settings-modal__description">Available actions:</span>
+          <button class="btn btn--change-name" type="button" id="btn-change-name">Change name</button>
+          <button class="btn btn--delete" type="button" id="btn-delete">Delete</button>
+        </form>
+      </dialog>
+
+      <dialog class="rename-group-modal center-modal helper-modal" id="rename-modal-id">
+        <form method="dialog" class="rename-group-form helper-form">
+          <label class="rename-group-form__label label-required-asterisk">New name:</label>
+          <input
+            type="text"
+            class="rename-group-form__input helper-form-input"
+            required
+            name="rename-input"
+            id="rename-input-id">
+      
+          <div class="rename-group-btn-wrapper">
+            <button class="btn" type="submit" id="rename-submit-btn">Submit</button>
+            <button class="btn btn--modal-cancel" type="button" id="rename-cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+  </body>
+</html>

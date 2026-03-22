@@ -1,0 +1,83 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:where(body) {
+  /* overflow-x: hidden; */
+
+  font-family: var(--font-custom-sans), var(--font-system-sans);
+  font-size: var(--step-1);
+  color: var(--clr-font-primary);
+  
+  background-color: var();
+  
+  scroll-behavior: smooth;
+  overflow-wrap: break-word;
+
+  text-wrap: pretty;
+  line-height: 1.5;
+  hyphens: auto;
+}
+
+:where(img, picture, video, canvas, svg) {
+  max-inline-size: 100%;
+  block-size: auto;
+  display: block;
+}
+
+:where(legend) {
+  padding: 0;
+}
+
+:where(button, input, optgroup, select, textarea) {
+  font: inherit;
+}
+
+:where(a) {
+  &:hover,
+  &:focus-visible {
+    text-decoration: none;
+  }
+}
+
+:where(summary) {
+  display: list-item;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  text-wrap: balance;
+}
+
+:where(h1) {
+  font-size: var(--step-5);
+  font-weight: var(--fw-800);
+}
+
+:where(h2) {
+  font-size: var(--step-4);
+  font-weight: var(--fw-700);
+}
+
+:where(h3) {
+  font-size: var(--step-3);
+  font-weight: var(--fw-400);
+}
+
+:where(ul, ol) {
+  list-style-type: none;
+  padding-inline: 2ch;
+}
+
+:where(dl, dd) {
+  padding-inline: 2ch;
+}
+
+/* 
+https://www.joshwcomeau.com/css/custom-css-reset/
+target element must have the transition property!
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+} */

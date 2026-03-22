@@ -1,0 +1,46 @@
+.board {
+  display: grid;
+  grid-template: 
+    repeat(3, 10rem) /
+    repeat(3, 10rem);
+  gap: var(--space-2xs);
+}
+
+.board__area {
+  background-color: var(--board-area-bg);
+  border-radius: var(--space-2xs);    
+
+  transition: 75ms ease;
+  &:hover {
+    background-color: var(--board-area-bg-hover);
+  }
+  &:active {
+    background-color: var(--board-area-bg-active);
+  }
+}
+
+/* SVGs styles */
+.mark {
+  transition: .75s cubic-bezier(0.075, 0.82, 0.165, 1);  
+  scale: 1;
+  @starting-style {
+    scale: .75;
+  };
+  &:active {
+    scale: .75;
+  }
+}
+
+.cross {
+  stroke: var(--clr-svg-mark-cross);
+  &:hover {
+    stroke: var(--clr-svg-mark-cross-hover);
+  }
+}
+
+.circle {
+  stroke: var(--clr-svg-mark-circle);
+  &:hover {
+    stroke: var(--clr-svg-mark-circle-hover);
+  }
+}

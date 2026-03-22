@@ -1,0 +1,36 @@
+.content {
+  background-color: var(--clr-form-section-bg);
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & > :not(.content__form),
+  & .form__submit,
+  & .form__span {
+    margin-inline-start: var(--space-xl);
+  }
+}
+
+.content__intro,
+.content__span {
+  font-weight: var(--fw-500);
+  
+  & > span {
+    font-style: italic;
+  }
+}
+
+.content__intro {
+  margin-block-end: var(--space-s);
+  max-width: 47ch;
+}
+
+.content__span {
+  margin-block-end: var(--space-xl);
+}
+
+.form__submit,
+.form__span {
+  display: block;  
+}

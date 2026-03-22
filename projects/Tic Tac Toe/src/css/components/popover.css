@@ -1,0 +1,63 @@
+dialog {
+  padding: 0;
+
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+
+  border-radius: 1rem;
+  border: solid black .15rem;
+
+  transition: 250ms ease allow-discrete;
+  scale: 0;
+  opacity: 0;
+}
+
+dialog:open {
+  transition: 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  scale: 1;
+  opacity: 1;
+  @starting-style {
+    scale: 0;
+    opacity: 0;
+  }
+}
+
+dialog > form > * {
+  display: block;
+}
+
+dialog > form {
+  position: relative;
+  
+  display: flex;
+  flex-direction: column;
+
+  padding-block: var(--space-l);
+  padding-inline: var(--space-l);
+
+  & > * + *:not(input, .btn--popover#cancel-button) {
+    margin-block-start: var(--space-xs);
+  }
+
+  & > h1 {
+    font-size: var(--step-4);
+    text-align: center;
+  }
+
+  & input { 
+    font-size: var(--step-0);
+  }
+
+  & > label {
+    color: var(--clr-dialog-label);
+    text-transform: uppercase;
+    font-size: var(--step-0);
+  }
+}
+
+.btn--popover#cancel-button {
+  position: absolute;
+  right: 2%;
+  top: 2%;
+}
